@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js project</title>
+    <link rel="stylesheet" href="question.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <section class="nav-section">
+        <div class="nav-subject">
+            <div class="quiz-icon access-icon">
+                <img src="Subject Icon Container (2).png" alt="Accessibility">
+            </div>
+            <span class="quiz-label">Accessibility</span>
+        </div>
+    </section>
+    <section class="hero-section">
+        <div class="first-hero">
+            <p class="d-p">Question 6 of 10</p>
+            <h2 class="d-h2">Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?</h2>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+        <div class="second-hero">
+            <div class="quiz-option">
+                <span class="option-letter">A</span>
+                <span class="quiz-label">4.5 : 1</span>
+            </div>
+            <div class="quiz-option">
+                <span class="option-letter">B</span>
+                <span class="quiz-label">3 : 1</span>
+            </div>
+            <div class="quiz-option">
+                <span class="option-letter">C</span>
+                <span class="quiz-label">2.5 : 1</span>
+            </div>
+            <div class="quiz-option">
+                <span class="option-letter">D</span>
+                <span class="quiz-label">5 : 1</span>
+            </div>
+            <button class="start-btn">Submit Answer</button>
+        </div>
+    </section>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const questions = [
+            {
+                question: "Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?",
+                options: ["4.5 : 1", "3 : 1", "2.5 : 1", "5 : 1"],
+                correct: 0
+            },
+            {
+                question: "What does the 'alt' attribute in an image tag do?",
+                options: ["Changes image size", "Provides alternative text", "Adds a border", "Links the image"],
+                correct: 1
+            },
+            {
+                question: "Which HTML tag is used for the largest heading?",
+                options: ["h6", "h3", "h1", "head"],
+                correct: 2
+            },
+            {
+                question: "What does CSS stand for?",
+                options: ["Computer Style Sheets", "Cascading Style Sheets", "Creative Style Sheets", "Colorful Style Sheets"],
+                correct: 1
+            },
+            {
+                question: "Which property is used to change text color in CSS?",
+                options: ["font-color", "text-color", "color", "foreground"],
+                correct: 2
+            },
+            {
+                question: "What is the correct way to select an element with id 'main' in CSS?",
+                options: [".main", "*main", "#main", "main"],
+                correct: 2
+            },
+            {
+                question: "Which of these is a JavaScript data type?",
+                options: ["integer", "float", "undefined", "character"],
+                correct: 2
+            },
+            {
+                question: "What does 'DOM' stand for?",
+                options: ["Document Object Model", "Data Object Model", "Display Object Management", "Document Oriented Model"],
+                correct: 0
+            },
+            {
+                question: "Which method adds an element to the end of an array?",
+                options: ["push()", "pop()", "shift()", "append()"],
+                correct: 0
+            },
+            {
+                question: "What is the purpose of the 'viewport' meta tag?",
+                options: ["Sets page title", "Controls page zoom", "Controls layout on mobile", "Adds page icon"],
+                correct: 2
+            }
+        ]
+
+        let currentQuestion = 0
+        let selectedOption = null
+        let score = 0
+        let answered = false
+
+        const questionText = document.querySelector('.d-h2')
+        const questionNumber = document.querySelector('.d-p')
+        const progressFill = document.querySelector('.progress-fill')
+        const options = document.querySelectorAll('.quiz-option')
+        const submitBtn = document.querySelector('.start-btn')
+
+        function renderQuestion() {
+            const q = questions[currentQuestion]
+            questionText.textContent = q.question
+            questionNumber.textContent = `Question ${currentQuestion + 1} of ${questions.length}`
+            progressFill.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`
+            selectedOption = null
+            answered = false
+            submitBtn.textContent = 'Submit Answer'
+
+            options.forEach((option, index) => {
+                const letter = option.querySelector('.option-letter')
+                const label = option.querySelector('.quiz-label')
+                label.textContent = q.options[index]
+                option.classList.remove('active')
+                letter.textContent = ['A', 'B', 'C', 'D'][index]
+                letter.style.backgroundColor = ''
+                letter.style.color = ''
+                option.style.border = ''
+                option.style.backgroundColor = ''
+            })
+        }
+
+        function selectOption(index) {
+            if (answered) return
+            options.forEach(o => o.classList.remove('active'))
+            options[index].classList.add('active')
+            selectedOption = index
+        }
+
+        function checkAnswer() {
+            if (selectedOption === null) return
+            const correct = questions[currentQuestion].correct
+            answered = true
+
+            options.forEach((option, index) => {
+                const letter = option.querySelector('.option-letter')
+                if (index === correct) {
+                    option.style.border = '3px solid #26d782'
+                    letter.style.backgroundColor = '#26d782'
+                    letter.style.color = '#ffffff'
+                    letter.textContent = '✓'
+                } else if (index === selectedOption && selectedOption !== correct) {
+                    option.style.border = '3px solid #ee5454'
+                    letter.style.backgroundColor = '#ee5454'
+                    letter.style.color = '#ffffff'
+                    letter.textContent = '✗'
+                }
+            })
+
+            if (selectedOption === correct) {
+                score++
+                submitBtn.textContent = 'Next Question'
+            } else {
+                submitBtn.textContent = 'See Result'
+            }
+        }
+
+        function handleSubmit() {
+            if (!answered) {
+                checkAnswer()
+                return
+            }
+
+            const correct = questions[currentQuestion].correct
+            if (selectedOption !== correct) {
+                window.location.href = '../third page/congrats.html'
+                return
+            }
+
+            currentQuestion++
+            if (currentQuestion === questions.length) {
+                window.location.href = '../third page/congrats.html'
+            } else {
+                renderQuestion()
+            }
+        }
+
+        options.forEach((option, index) => {
+            option.addEventListener('click', () => selectOption(index))
+        })
+
+        submitBtn.addEventListener('click', handleSubmit)
+
+        renderQuestion()
+    })
+    </script>
+</body>
+</html>
