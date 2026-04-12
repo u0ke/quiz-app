@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+    /* Colors */
+    --white: #FFFFFF;
+    --black: #000000;
+    
+    --grey-50: #F4F6FA;
+    --grey-500: #626C7F;
+    
+    --blue-50: #EBF0FF;
+    --blue-100: #EDF1F9;
+    --blue-300: #ABC1E1;
+    --blue-500: #306AFF;
+    --blue-850: #3B4D66;
+    --blue-900: #313E51;
+    --blue-950: #2D3949;
+    
+    --green-100: #E0FDEF;
+    --green-500: #2FD887;
+    
+    --purple-100: #F6E7FF;
+    --purple-600: #A729F5;
+    
+    --orange-50: #FFF5ED;
+    --orange-400: #FF7E35;
+    
+    --red-500: #EE5454;
+
+    /* Spacing Scale */
+    --space-100: 8px;
+    --space-200: 16px;
+    --space-300: 24px;
+    --space-400: 32px;
+    --space-500: 40px;
+    --space-600: 48px;
+    --space-800: 64px;
+    --space-1600: 128px;
+    --space-1800: 144px;
+    --space-2300: 184px;
+}
+
+/* Typography  */
+.text-preset-1 { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 144px; line-height: 100%; letter-spacing: 0px; }
+.text-preset-2-med { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 64px; line-height: 100%; }
+.text-preset-2-light { font-family: 'Rubik', sans-serif; font-weight: 300; font-size: 64px; line-height: 100%; }
+.text-preset-3 { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 36px; line-height: 120%; }
+
+
