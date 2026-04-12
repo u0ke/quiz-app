@@ -74,6 +74,7 @@ body {
     height: 16px;
     background-color: #a729f5;
     border-radius: 999px;
+    transition: width 0.3s ease;
 }
 
 .second-hero {
@@ -95,14 +96,13 @@ body {
     gap: 32px;
     padding: 0 20px;
     cursor: pointer;
+    border: 3px solid transparent; /* Added transparent border to prevent layout shift */
     transition: all 0.2s;
 }
 
+/* Hover State */
 .quiz-option:hover {
-    background-color: #3b4d6b;
     border: 3px solid #a729f5;
-    transform: scale(1.02);
-    transition: all 0.2s;
 }
 
 .quiz-option:hover .option-letter {
@@ -110,12 +110,12 @@ body {
     color: #ffffff;
 }
 
-.quiz-option:active {
-    background-color: #3b4d6b;
+/* Active/Selected State - controlled by JS */
+.quiz-option.active {
     border: 3px solid #a729f5;
 }
 
-.quiz-option:active .option-letter {
+.quiz-option.active .option-letter {
     background-color: #a729f5;
     color: #ffffff;
 }
@@ -132,6 +132,7 @@ body {
     font-weight: 500;
     font-size: 24px;
     color: #313e51;
+    transition: all 0.2s;
 }
 
 .quiz-label {
@@ -165,16 +166,17 @@ body {
     font-size: 28px;
     color: #ffffff;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 .start-btn:hover {
     background-color: #b36aeb;
-    transition: 1s;
 }
 
 @media (max-width: 1024px) {
     body {
         height: 100%;
+        overflow-y: auto;
     }
 
     .nav-section {
