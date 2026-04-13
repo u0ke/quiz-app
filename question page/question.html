@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,11 @@
     <link rel="stylesheet" href="question.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <section class="nav-section">
         <div class="nav-subject">
@@ -21,7 +25,8 @@
     <section class="hero-section">
         <div class="first-hero">
             <p class="d-p">Question 6 of 10</p>
-            <h2 class="d-h2">Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?</h2>
+            <h2 class="d-h2">Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for
+                normal text?</h2>
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
@@ -47,7 +52,48 @@
         </div>
     </section>
     <script>
-        
+        // Select the necessary DOM elements using your existing classes
+        const options = document.querySelectorAll('.quiz-option');
+        const progressFill = document.querySelector('.progress-fill');
+        const submitBtn = document.querySelector('.start-btn');
+
+        let optionSelected = false;
+
+        // Initialize the progress bar for Question 6 (60%)
+        progressFill.style.width = '60%';
+        progressFill.style.transition = 'width 0.4s ease'; // Smooth animation
+
+        // Add click event listeners to each quiz option
+        options.forEach(option => {
+            option.addEventListener('click', function () {
+                // 1. Reset styling for all options to clear previous selections
+                options.forEach(opt => {
+                    opt.style.border = '';
+                    // You can add logic here to reset background color if needed
+                });
+
+                // 2. Highlight the newly clicked option
+                this.style.border = '3px solid #A729F5'; // Using the purple theme color
+                this.style.borderRadius = '12px'; // Adjust radius as needed
+                optionSelected = true;
+
+                // 3. Move the progress bar visually to indicate completion of the step
+                progressFill.style.width = '70%';
+            });
+        });
+
+        // Add click event listener to the submit button
+        submitBtn.addEventListener('click', function () {
+            if (optionSelected) {
+                // Redirect to the score page. 
+                // The path uses '../' to go up one directory and into the score page folder.
+                window.location.href = '../score page/score_page.html';
+            } else {
+                // Prompt the user if they try to submit without selecting an answer
+                alert('Please select an answer first!');
+            }
+        });
     </script>
 </body>
+
 </html>

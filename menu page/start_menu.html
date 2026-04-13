@@ -133,28 +133,7 @@
         </main>
     </section>
     <script>
-            < script >
-            document.addEventListener('DOMContentLoaded', () => {
-                // Map your div IDs to the subject names
-                const subjects = [
-                    { id: 'child_1', name: 'HTML' },
-                    { id: 'child_2', name: 'CSS' },
-                    { id: 'chikd_3', name: 'Javascript' }, // Used your exact ID here
-                    { id: 'child_4', name: 'Accessibility' }
-                ];
 
-                subjects.forEach(sub => {
-                    const element = document.getElementById(sub.id);
-                    if (element) {
-                        element.addEventListener('click', () => {
-                            // Save the chosen subject to memory
-                            localStorage.setItem('selectedSubject', sub.name);
-                            // Navigate to the question page
-                            window.location.href = '../question page/question.html';
-                        });
-                    }
-                });
-            });
     </script>
     </script>
 </body>
