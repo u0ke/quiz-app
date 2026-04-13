@@ -1,65 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiz app</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap"
+        rel="stylesheet">
     <script>
-    tailwind.config = {
-        theme: {
-        extend: {
-            colors: {
-            // Colors from images
-            grey: {
-                50: '#F4F6FA',
-                500: '#626C7F',
-            },
-            blue: {
-                50: '#EBFOFF',
-                100: '#EDF1F9',
-                300: '#ABC1E1',
-                500: '#306AFF',
-                850: '#3B4D66',
-                900: '#313E51',
-                950: '#2D3949',
-            },
-            green: {
-                100: '#EOFDEF',
-                500: '#2FD887',
-            },
-            purple: {
-                100: '#F6E7FF',
-                600: '#A729F5',
-            },
-            orange: {
-                50: '#FFF5ED',
-                400: '#FF7E35',
-            },
-            red: {
-                500: '#EE5454',
-            }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Colors from images
+                        grey: {
+                            50: '#F4F6FA',
+                            500: '#626C7F',
+                        },
+                        blue: {
+                            50: '#EBFOFF',
+                            100: '#EDF1F9',
+                            300: '#ABC1E1',
+                            500: '#306AFF',
+                            850: '#3B4D66',
+                            900: '#313E51',
+                            950: '#2D3949',
+                        },
+                        green: {
+                            100: '#EOFDEF',
+                            500: '#2FD887',
+                        },
+                        purple: {
+                            100: '#F6E7FF',
+                            600: '#A729F5',
+                        },
+                        orange: {
+                            50: '#FFF5ED',
+                            400: '#FF7E35',
+                        },
+                        red: {
+                            500: '#EE5454',
+                        }
 
-            },
-            spacing: {
-                '100': '8px',
-                '200': '16px',
-                '300': '24px',
-                '400': '32px',
-                '500': '40px',
-                '600': '48px',
-                '800': '64px',
-                '1600': '128px',
-                '1800': '144px',
-                '2300': '184px',
-            },
-            fontFamily: {
-            sans: ['Rubik', 'sans-serif'],
+                    },
+                    spacing: {
+                        '100': '8px',
+                        '200': '16px',
+                        '300': '24px',
+                        '400': '32px',
+                        '500': '40px',
+                        '600': '48px',
+                        '800': '64px',
+                        '1600': '128px',
+                        '1800': '144px',
+                        '2300': '184px',
+                    },
+                    fontFamily: {
+                        sans: ['Rubik', 'sans-serif'],
+                    }
+                }
             }
         }
-        }
-    }
     </script>
 </head>
 
@@ -67,9 +69,12 @@
     <section id="parent_section" class="bg-blue-900 min-h-screen bg-[url('./assets/Ellipse-8.png')] bg-no-repeat">
         <header class="flex justify-end p-6 md:p-10">
             <div class="flex items-center space-x-4">
-                <img src="assets/Vector.png" alt="" class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
-                <img src="assets/Theme Toggle Icons.png" alt="" class="w-[32px] h-[20px] object-contain md:w-[48px] h-[28px]">
-                <img src="assets/Vector1.png" alt="" class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
+                <img src="assets/Vector.png" alt=""
+                    class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
+                <img src="assets/Theme Toggle Icons.png" alt=""
+                    class="w-[32px] h-[20px] object-contain md:w-[48px] h-[28px]">
+                <img src="assets/Vector1.png" alt=""
+                    class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
             </div>
         </header>
         <main id="hero_parent" class="pt-[20px] px-[24px] py-[32px]">
@@ -87,36 +92,71 @@
                 </div>
 
                 <div id="parent_div" class="text-white mb-[175px]">
-                    <div id="child_1" class=" bg-blue-850 rounded-[24px] p-[16px] mt-[40px] flex items-center gap-[16px] hover:bg-white duration-300 cursor-pointer hover:text-blue-850 duration-300">
-                        <div class="bg-orange-50 rounded-[10px] w-[56px] h-[56px] flex items-center justify-center">
-                            <img src="assets/Vector2.png" alt="" class="w-[32px] h-[32px] object-contain">
+                    <a href="../question page/question.html?subject=HTML" id="child_1"
+                        class="bg-blue-850 rounded-[24px] p-[16px] mt-[40px] flex items-center gap-[16px] hover:bg-white duration-300 cursor-pointer hover:text-blue-850 transition-all shadow-lg">
+                        <div
+                            class="bg-orange-50 rounded-[10px] w-[56px] h-[56px] flex items-center justify-center shrink-0">
+                            <img src="assets/Vector2.png" alt="HTML Icon" class="w-[32px] h-[32px] object-contain">
                         </div>
                         <p class="font-[500] text-[18px] md:text-[28px]">HTML</p>
-                    </div>
+                    </a>
 
-                    <div id="child_2" class=" bg-blue-850 rounded-[24px] p-[16px] mt-[18px] flex items-center gap-[16px] hover:bg-white duration-300 cursor-pointer hover:text-blue-850 duration-300">
-                        <div class="bg-[#E0FDEF] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center">
-                            <img src="assets/Vector3.png" alt="" class="w-[32px] h-[32px] object-contain">
+                    <a href="../question page/question.html?subject=CSS" id="child_2"
+                        class="bg-blue-850 rounded-[24px] p-[16px] mt-[18px] flex items-center gap-[16px] hover:bg-white duration-300 cursor-pointer hover:text-blue-850 transition-all shadow-lg">
+                        <div
+                            class="bg-[#E0FDEF] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center shrink-0">
+                            <img src="assets/Vector3.png" alt="CSS Icon" class="w-[32px] h-[32px] object-contain">
                         </div>
                         <p class="font-[500] text-[18px] md:text-[28px]">CSS</p>
-                    </div>
+                    </a>
 
-                    <div id="chikd_3" class=" bg-blue-850 rounded-[24px] p-[16px] mt-[18px] flex items-center gap-[16px] hover:bg-white duration-300 cursor-pointer hover:text-blue-850 duration-300">
-                        <div class="bg-[#EBF0FF] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center">
-                            <img src="assets/Vector4.png" alt="" class="w-[32px] h-[32px] object-contain">
+                    <a href="../question page/question.html?subject=JavaScript" id="child_3"
+                        class="bg-blue-850 rounded-[24px] p-[16px] mt-[18px] flex items-center gap-[16px] hover:bg-white duration-300 cursor-pointer hover:text-blue-850 transition-all shadow-lg">
+                        <div
+                            class="bg-[#EBF0FF] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center shrink-0">
+                            <img src="assets/Vector4.png" alt="JS Icon" class="w-[32px] h-[32px] object-contain">
                         </div>
                         <p class="font-[500] text-[18px] md:text-[28px]">Javascript</p>
-                    </div>
+                    </a>
 
-                    <div id="child_4" class=" bg-blue-850 rounded-[24px] p-[16px] mt-[18px] flex items-center gap-[16px] hover:bg-white duration-300 cursor-pointer hover:text-blue-850 duration-300">
-                        <div class="bg-[#F6E7FF] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center">
-                            <img src="assets/Vector5.png" alt="" class="w-[32px] h-[32px] object-contain">
+                    <a href="../question page/question.html?subject=Accessibility" id="child_4"
+                        class="bg-blue-850 rounded-[24px] p-[16px] mt-[18px] flex items-center gap-[16px] hover:bg-white duration-300 cursor-pointer hover:text-blue-850 transition-all shadow-lg">
+                        <div
+                            class="bg-[#F6E7FF] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center shrink-0">
+                            <img src="assets/Vector5.png" alt="Accessibility Icon"
+                                class="w-[32px] h-[32px] object-contain">
                         </div>
                         <p class="font-[500] text-[18px] md:text-[28px]">Accessibility</p>
-                    </div>
+                    </a>
                 </div>
             </section>
         </main>
     </section>
+    <script>
+            < script >
+            document.addEventListener('DOMContentLoaded', () => {
+                // Map your div IDs to the subject names
+                const subjects = [
+                    { id: 'child_1', name: 'HTML' },
+                    { id: 'child_2', name: 'CSS' },
+                    { id: 'chikd_3', name: 'Javascript' }, // Used your exact ID here
+                    { id: 'child_4', name: 'Accessibility' }
+                ];
+
+                subjects.forEach(sub => {
+                    const element = document.getElementById(sub.id);
+                    if (element) {
+                        element.addEventListener('click', () => {
+                            // Save the chosen subject to memory
+                            localStorage.setItem('selectedSubject', sub.name);
+                            // Navigate to the question page
+                            window.location.href = '../question page/question.html';
+                        });
+                    }
+                });
+            });
+    </script>
+    </script>
 </body>
+
 </html>
