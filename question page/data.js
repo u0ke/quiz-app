@@ -44,6 +44,18 @@ const quizData = {
                 question: "How do you write 'Hello World' in an alert box?",
                 options: ["msgBox('Hello World');", "alertBox('Hello World');", "msg('Hello World');", "alert('Hello World');"],
                 answer: "alert('Hello World');"
+            },
+            // New Question 1
+            {
+                question: "How do you create a function in JavaScript?",
+                options: ["function myFunction()", "function:myFunction()", "function = myFunction()", "create myFunction()"],
+                answer: "function myFunction()"
+            },
+            // New Question 2
+            {
+                question: "How do you write an IF statement in JavaScript?",
+                options: ["if i = 5 then", "if (i == 5)", "if i == 5", "if i = 5"],
+                answer: "if (i == 5)"
             }
         ]
     },
