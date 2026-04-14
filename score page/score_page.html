@@ -1,80 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiz app</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap"
+        rel="stylesheet">
     <script>
-    tailwind.config = {
-        theme: {
-        extend: {
-            colors: {
-            // Colors from images
-            grey: {
-                50: '#F4F6FA',
-                500: '#626C7F',
-            },
-            blue: {
-                50: '#EBFOFF',
-                100: '#EDF1F9',
-                300: '#ABC1E1',
-                500: '#306AFF',
-                850: '#3B4D66',
-                900: '#313E51',
-                950: '#2D3949',
-            },
-            green: {
-                100: '#EOFDEF',
-                500: '#2FD887',
-            },
-            purple: {
-                100: '#F6E7FF',
-                600: '#A729F5',
-            },
-            orange: {
-                50: '#FFF5ED',
-                400: '#FF7E35',
-            },
-            red: {
-                500: '#EE5454',
-            }
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Colors from images
+                        grey: {
+                            50: '#F4F6FA',
+                            500: '#626C7F',
+                        },
+                        blue: {
+                            50: '#EBFOFF',
+                            100: '#EDF1F9',
+                            300: '#ABC1E1',
+                            500: '#306AFF',
+                            850: '#3B4D66',
+                            900: '#313E51',
+                            950: '#2D3949',
+                        },
+                        green: {
+                            100: '#EOFDEF',
+                            500: '#2FD887',
+                        },
+                        purple: {
+                            100: '#F6E7FF',
+                            600: '#A729F5',
+                        },
+                        orange: {
+                            50: '#FFF5ED',
+                            400: '#FF7E35',
+                        },
+                        red: {
+                            500: '#EE5454',
+                        }
 
-            },
-            spacing: {
-                '100': '8px',
-                '200': '16px',
-                '300': '24px',
-                '400': '32px',
-                '500': '40px',
-                '600': '48px',
-                '800': '64px',
-                '1600': '128px',
-                '1800': '144px',
-                '2300': '184px',
-            },
-            fontFamily: {
-            sans: ['Rubik', 'sans-serif'],
+                    },
+                    spacing: {
+                        '100': '8px',
+                        '200': '16px',
+                        '300': '24px',
+                        '400': '32px',
+                        '500': '40px',
+                        '600': '48px',
+                        '800': '64px',
+                        '1600': '128px',
+                        '1800': '144px',
+                        '2300': '184px',
+                    },
+                    fontFamily: {
+                        sans: ['Rubik', 'sans-serif'],
+                    }
+                }
             }
         }
-        }
-    }
     </script>
 </head>
+
 <body>
-    <section id="parent_section" class="bg-blue-900 min-h-screen bg-[url('../assets/Ellipse-8.png')] bg-no-repeat px-[24px] md:px-[64px]">
+    <section id="parent_section"
+        class="bg-blue-900 min-h-screen bg-[url('../assets/Ellipse-8.png')] bg-no-repeat px-[24px] md:px-[64px]">
         <header class="flex justify-between py-6 md:p-10">
             <div class="flex items-center gap-4">
-                <div class="bg-[#F6E7FF] rounded-[10px] w-[40px] h-[40px] flex items-center justify-center md:w-[56px] md:h-[56px]">
-                    <img src="assets/Vector5.png" alt="" class="w-[25px] h-[25px] object-contain md:w-[32px] md:h-[32px]">
+                <div
+                    class="bg-[#F6E7FF] rounded-[10px] w-[40px] h-[40px] flex items-center justify-center md:w-[56px] md:h-[56px]">
+                    <img src="assets/Vector5.png" alt=""
+                        class="w-[25px] h-[25px] object-contain md:w-[32px] md:h-[32px]">
                 </div>
                 <p class="text-white font-[500] text-[18px] md:text-[28px] tracking-wide">Accessibility</p>
             </div>
             <div class="flex items-center space-x-4">
-                <img src="assets/Vector.png" alt="" class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
-                <img src="assets/Theme Toggle Icons.png" alt="" class="w-[32px] h-[20px] object-contain md:w-[48px] h-[28px]">
-                <img src="assets/Vector1.png" alt="" class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
+                <img src="assets/Vector.png" alt=""
+                    class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
+                <img src="assets/Theme Toggle Icons.png" alt=""
+                    class="w-[32px] h-[20px] object-contain md:w-[48px] h-[28px]">
+                <img src="assets/Vector1.png" alt=""
+                    class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
             </div>
         </header>
 
@@ -90,10 +99,12 @@
                 </div>
 
                 <div>
-                    <div id="results_div" class="bg-blue-850 rounded-[24px] py-12 flex flex-col items-center justify-center">
+                    <div id="results_div"
+                        class="bg-blue-850 rounded-[24px] py-12 flex flex-col items-center justify-center">
                         <div class="flex items-center gap-4 mb-6">
                             <div class="bg-[#f6e7ff] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center">
-                                <img src="assets/Vector5.png" alt="Accessibility Icon" class="w-[32px] h-[32px] object-contain">
+                                <img src="assets/Vector5.png" alt="Accessibility Icon"
+                                    class="w-[32px] h-[32px] object-contain">
                             </div>
                             <h2 class="text-white font-medium text-[28px]">Accessibility</h2>
                         </div>
@@ -105,16 +116,18 @@
                             <p class="text-blue-300 font-normal text-[24px] pt-4">
                                 out of 10
                             </p>
-                            
+
                         </div>
                     </div>
 
-                    <button class="w-full bg-purple-600 text-white text-[28px] p-[24px] rounded-[24px] mt-5 mb-[266px] hover:bg-purple-500">
+                    <a href="../menu page/start_menu.html"
+                        class="block text-center w-full bg-purple-600 text-white text-[28px] p-[24px] rounded-[24px] mt-5 mb-[266px] hover:bg-purple-500">
                         Play Again
-                    </button>
+                    </a>
                 </div>
             </section>
         </main>
     </section>
 </body>
+
 </html>
