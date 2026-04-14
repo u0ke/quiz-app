@@ -4,10 +4,10 @@
     /* Colors */
     --white: #FFFFFF;
     --black: #000000;
-    
+
     --grey-50: #F4F6FA;
     --grey-500: #626C7F;
-    
+
     --blue-50: #EBF0FF;
     --blue-100: #EDF1F9;
     --blue-300: #ABC1E1;
@@ -15,16 +15,16 @@
     --blue-850: #3B4D66;
     --blue-900: #313E51;
     --blue-950: #2D3949;
-    
+
     --green-100: #E0FDEF;
     --green-500: #2FD887;
-    
+
     --purple-100: #F6E7FF;
     --purple-600: #A729F5;
-    
+
     --orange-50: #FFF5ED;
     --orange-400: #FF7E35;
-    
+
     --red-500: #EE5454;
 
     /* Spacing Scale */
@@ -41,9 +41,31 @@
 }
 
 /* Typography  */
-.text-preset-1 { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 144px; line-height: 100%; letter-spacing: 0px; }
-.text-preset-2-med { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 64px; line-height: 100%; }
-.text-preset-2-light { font-family: 'Rubik', sans-serif; font-weight: 300; font-size: 64px; line-height: 100%; }
-.text-preset-3 { font-family: 'Rubik', sans-serif; font-weight: 500; font-size: 36px; line-height: 120%; }
+.text-preset-1 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 144px;
+    line-height: 100%;
+    letter-spacing: 0px;
+}
 
+.text-preset-2-med {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 100%;
+}
 
+.text-preset-2-light {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: 64px;
+    line-height: 100%;
+}
+
+.text-preset-3 {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 120%;
+}

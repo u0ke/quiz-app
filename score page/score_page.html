@@ -129,17 +129,17 @@
         </main>
     </section>
     <script>
-    
-    const urlParams = new URLSearchParams(window.location.search);
-    const score = urlParams.get('score') || 0;
-    const total = urlParams.get('total') || 0;
-    const subject = urlParams.get('subject') || "Quiz";
 
-    
-    document.querySelector('h2.text-white').textContent = subject;
-    document.querySelector('.text-white.text-\\[144px\\]').textContent = score;
-    document.querySelector('.text-blue-300').textContent = `out of ${total}`;
-</script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const score = urlParams.get('score') || 0;
+        const total = urlParams.get('total') || 0;
+        const subject = urlParams.get('subject') || "Quiz";
+
+
+        document.querySelector('h2.text-white').textContent = subject;
+        document.querySelector('.text-white.text-\\[144px\\]').textContent = score;
+        document.querySelector('.text-blue-300').textContent = `out of ${total}`;
+    </script>
 </body>
 
 </html>

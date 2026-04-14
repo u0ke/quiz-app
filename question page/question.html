@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App - Questions</title>
     <link rel="stylesheet" href="question.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap"
+        rel="stylesheet">
 </head>
+
 <body class="quiz-body">
     <section class="main-container">
         <header class="quiz-header">
@@ -29,7 +32,7 @@
                     <p class="tracker-text" id="question-tracker">Loading...</p>
                     <h2 class="question-heading" id="question-text">Loading...</h2>
                 </div>
-                
+
                 <div class="progress-container">
                     <div class="progress-fill" id="progress-fill"></div>
                 </div>
@@ -37,7 +40,7 @@
 
             <div class="options-column">
                 <div id="options-container">
-                    </div>
+                </div>
                 <button class="action-button" id="submit-btn">Submit Answer</button>
                 <p class="error-msg" id="error-msg">Please select an answer first!</p>
             </div>
@@ -52,7 +55,7 @@
         const subjectTitle = document.getElementById('subject-title');
         const subjectIcon = document.getElementById('subject-icon');
         const subjectIconBg = document.getElementById('subject-icon-bg');
-        
+
         const questionTracker = document.getElementById('question-tracker');
         const questionText = document.getElementById('question-text');
         const optionsContainer = document.getElementById('options-container');
@@ -85,10 +88,10 @@
 
         function loadQuestion() {
             const currentQ = questionsList[currentQuestionIndex];
-            
+
             questionTracker.textContent = `Question ${currentQuestionIndex + 1} of ${questionsList.length}`;
             questionText.textContent = currentQ.question;
-            
+
             optionsContainer.innerHTML = "";
             optionSelected = false;
             selectedElement = null;
@@ -111,8 +114,8 @@
             const options = document.querySelectorAll('.quiz-option');
             options.forEach(option => {
                 option.addEventListener('click', function () {
-                    if (isSubmitted) return; 
-                    
+                    if (isSubmitted) return;
+
                     options.forEach(opt => {
                         opt.style.border = '3px solid transparent';
                         opt.querySelector('.option-letter').style.background = '#F4F6FA';
@@ -122,7 +125,7 @@
                     this.style.border = '3px solid #A729F5';
                     this.querySelector('.option-letter').style.background = '#A729F5';
                     this.querySelector('.option-letter').style.color = 'white';
-                    
+
                     optionSelected = true;
                     selectedElement = this;
                     errorMsg.style.display = "none";
@@ -170,4 +173,5 @@
         });
     </script>
 </body>
+
 </html>
