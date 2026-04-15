@@ -5,21 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>quiz app</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap"
         rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        // Colors from images
                         grey: {
                             50: '#F4F6FA',
                             500: '#626C7F',
                         },
                         blue: {
-                            50: '#EBFOFF',
+                            50: '#EBF0FF',
                             100: '#EDF1F9',
                             300: '#ABC1E1',
                             500: '#306AFF',
@@ -28,7 +30,7 @@
                             950: '#2D3949',
                         },
                         green: {
-                            100: '#EOFDEF',
+                            100: '#E0FDEF',
                             500: '#2FD887',
                         },
                         purple: {
@@ -42,7 +44,6 @@
                         red: {
                             500: '#EE5454',
                         }
-
                     },
                     spacing: {
                         '100': '8px',
@@ -66,58 +67,50 @@
 </head>
 
 <body>
-    <section id="parent_section"
-        class="bg-blue-900 min-h-screen bg-[url('../assets/Ellipse-8.png')] bg-no-repeat px-[24px] md:px-[64px]">
+    <section class="bg-blue-900 min-h-screen bg-[url('../assets/Ellipse-8.png')] bg-no-repeat px-[24px] md:px-[64px]">
+
         <header class="flex justify-between py-6 md:p-10">
             <div class="flex items-center gap-4">
-                <div
-                    class="bg-[#F6E7FF] rounded-[10px] w-[40px] h-[40px] flex items-center justify-center md:w-[56px] md:h-[56px]">
-                    <img src="assets/Vector5.png" alt=""
-                        class="w-[25px] h-[25px] object-contain md:w-[32px] md:h-[32px]">
+                <div class="bg-[#F6E7FF] rounded-[10px] w-[40px] h-[40px] flex items-center justify-center md:w-[56px] md:h-[56px]">
+                    <img src="assets/Vector5.png" class="w-[25px] md:w-[32px]">
                 </div>
-                <p class="text-white font-[500] text-[18px] md:text-[28px] tracking-wide">Accessibility</p>
+                <p id="subject-name" class="text-white font-[500] text-[18px] md:text-[28px]">Quiz</p>
             </div>
+
             <div class="flex items-center space-x-4">
-                <img src="assets/Vector.png" alt=""
-                    class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
-                <img src="assets/Theme Toggle Icons.png" alt=""
-                    class="w-[32px] h-[20px] object-contain md:w-[48px] h-[28px]">
-                <img src="assets/Vector1.png" alt=""
-                    class="w-[16px] h-[16px] object-contain md:w-[24px] h-[24px] object-contain">
+                <img src="assets/Vector.png" class="w-[16px] md:w-[24px]">
+                <img src="assets/Theme Toggle Icons.png" class="w-[32px] md:w-[48px]">
+                <img src="assets/Vector1.png" class="w-[16px] md:w-[24px]">
             </div>
         </header>
 
         <main>
             <section class="lg:grid grid-cols-2">
-                <div class="py-[32px] lg:py-[0px]">
-                    <h1 class="text-white text-[40px] font-[300] leading-1 md:text-[64px]">
+
+                <div class="py-[32px]">
+                    <h1 class="text-white text-[40px] font-[300] md:text-[64px]">
                         Quiz completed <br>
-                        <span class="font-[500] leading-1">
+                        <span class="font-[500]">
                             You scored...
                         </span>
                     </h1>
                 </div>
 
                 <div>
-                    <div id="results_div"
-                        class="bg-blue-850 rounded-[24px] py-12 flex flex-col items-center justify-center">
+                    <div class="bg-blue-850 rounded-[24px] py-12 flex flex-col items-center">
+
                         <div class="flex items-center gap-4 mb-6">
-                            <div class="bg-[#f6e7ff] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center">
-                                <img src="assets/Vector5.png" alt="Accessibility Icon"
-                                    class="w-[32px] h-[32px] object-contain">
+                            <div class="bg-[#F6E7FF] rounded-[10px] w-[56px] h-[56px] flex items-center justify-center">
+                                <img src="assets/Vector5.png" class="w-[32px]">
                             </div>
-                            <h2 class="text-white font-medium text-[28px]">Accessibility</h2>
+                            <h2 id="subject-title" class="text-white text-[28px]">Quiz</h2>
                         </div>
 
                         <div class="flex flex-col items-center">
-                            <span class="text-white text-[144px] font-bold leading-none">
-                                8
-                            </span>
-                            <p class="text-blue-300 font-normal text-[24px] pt-4">
-                                out of 10
-                            </p>
-
+                            <span id="score-number" class="text-white text-[144px] font-bold leading-none">0</span>
+                            <p id="total-text" class="text-blue-300 text-[24px] pt-4">out of 0</p>
                         </div>
+
                     </div>
 
                     <a href="../menu page/start_menu.html"
@@ -125,21 +118,25 @@
                         Play Again
                     </a>
                 </div>
+
             </section>
         </main>
+
     </section>
+
     <script>
+        const params = new URLSearchParams(location.search);
 
-        const urlParams = new URLSearchParams(window.location.search);
-        const score = urlParams.get('score') || 0;
-        const total = urlParams.get('total') || 0;
-        const subject = urlParams.get('subject') || "Quiz";
+        const score = params.get("score") || 0;
+        const total = params.get("total") || 0;
+        const subject = params.get("subject") || "Quiz";
 
-
-        document.querySelector('h2.text-white').textContent = subject;
-        document.querySelector('.text-white.text-\\[144px\\]').textContent = score;
-        document.querySelector('.text-blue-300').textContent = `out of ${total}`;
+        document.getElementById("subject-name").textContent = subject;
+        document.getElementById("subject-title").textContent = subject;
+        document.getElementById("score-number").textContent = score;
+        document.getElementById("total-text").textContent = "out of " + total;
     </script>
+
 </body>
 
 </html>

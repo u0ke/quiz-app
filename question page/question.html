@@ -1,177 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz App - Questions</title>
-    <link rel="stylesheet" href="question.css">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap"
-        rel="stylesheet">
+    <title>Quiz App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBlue: '#313E51',
+                        navy: '#3B4D66',
+                        purple: '#A729F5',
+                        lightBlue: '#ABC1E1',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
+<body class="bg-darkBlue min-h-screen text-white p-6 md:p-16">
 
-<body class="quiz-body">
-    <section class="main-container">
-        <header class="quiz-header">
-            <div class="subject-info" id="subject-header">
-                <div class="icon-box" id="subject-icon-bg">
-                    <img src="" alt="" id="subject-icon">
-                </div>
-                <h2 id="subject-title">Loading...</h2>
+    <header class="max-w-6xl mx-auto flex justify-between items-center mb-12">
+        <div class="flex items-center gap-4">
+            <div id="icon-bg" class="p-2 rounded-xl">
+                <img id="header-icon" src="" class="w-8 h-8">
             </div>
-            <div class="header-controls">
-                <img src="../menu page/assets/Vector.png" alt="Sun" class="icon-small">
-                <img src="../menu page/assets/Theme Toggle Icons.png" alt="Toggle" class="icon-toggle">
-                <img src="../menu page/assets/Vector1.png" alt="Moon" class="icon-small">
-            </div>
-        </header>
+            <span id="header-title" class="text-2xl font-medium"></span>
+        </div>
+    </header>
 
-        <main class="quiz-content">
-            <div class="question-column">
-                <div class="text-group">
-                    <p class="tracker-text" id="question-tracker">Loading...</p>
-                    <h2 class="question-heading" id="question-text">Loading...</h2>
-                </div>
-
-                <div class="progress-container">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
+    <main class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+        <div class="flex flex-col">
+            <p id="tracker" class="text-lightBlue italic text-xl mb-4"></p>
+            <h1 id="question" class="text-3xl font-medium leading-tight mb-8"></h1>
+            
+            <div class="w-full bg-navy h-4 rounded-full p-1 mb-12">
+                <div id="progress" class="bg-purple h-full rounded-full transition-all duration-500"></div>
             </div>
+        </div>
 
-            <div class="options-column">
-                <div id="options-container">
-                </div>
-                <button class="action-button" id="submit-btn">Submit Answer</button>
-                <p class="error-msg" id="error-msg">Please select an answer first!</p>
-            </div>
-        </main>
-    </section>
+        <div class="flex flex-col gap-4">
+            <div id="options" class="flex flex-col gap-4"></div>
+            <button id="main-btn" class="w-full bg-purple py-5 rounded-3xl text-xl font-medium mt-4">Submit Answer</button>
+            <p id="error" class="text-red-400 text-center hidden mt-2">Please select an answer</p>
+        </div>
+    </main>
 
     <script src="data.js"></script>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const subject = urlParams.get('subject');
+        const params = new URLSearchParams(location.search);
+        const subject = params.get("subject") || "HTML";
+        const quiz = quizData[subject];
+        let i = 0, score = 0, selected = null;
 
-        const subjectTitle = document.getElementById('subject-title');
-        const subjectIcon = document.getElementById('subject-icon');
-        const subjectIconBg = document.getElementById('subject-icon-bg');
+        document.getElementById("header-title").textContent = subject;
+        document.getElementById("header-icon").src = quiz.icon;
+        document.getElementById("icon-bg").style.backgroundColor = quiz.iconBg;
 
-        const questionTracker = document.getElementById('question-tracker');
-        const questionText = document.getElementById('question-text');
-        const optionsContainer = document.getElementById('options-container');
-        const progressFill = document.querySelector('.progress-fill');
-        const submitBtn = document.getElementById('submit-btn');
-        const errorMsg = document.getElementById('error-msg');
+        function load() {
+            const q = quiz.questions[i];
+            document.getElementById("tracker").textContent = `Question ${i + 1} of ${quiz.questions.length}`;
+            document.getElementById("question").textContent = q.question;
+            document.getElementById("progress").style.width = ((i + 1) / quiz.questions.length) * 100 + "%";
+            
+            const optionsDiv = document.getElementById("options");
+            optionsDiv.innerHTML = "";
+            selected = null;
+            document.getElementById("main-btn").textContent = "Submit Answer";
 
-        let currentQuestionIndex = 0;
-        let score = 0;
-        let optionSelected = false;
-        let selectedElement = null;
-        let isSubmitted = false;
-        let questionsList = [];
-
-        if (subject && quizData[subject]) {
-            const subjectData = quizData[subject];
-            questionsList = subjectData.questions;
-
-            // Set Header UI
-            subjectTitle.textContent = subject;
-            subjectIcon.src = subjectData.icon;
-            subjectIconBg.style.backgroundColor = subjectData.iconBg;
-
-            loadQuestion();
-        } else {
-            questionText.textContent = "Error: Subject not found.";
-            questionTracker.textContent = "";
-            submitBtn.style.display = "none";
-        }
-
-        function loadQuestion() {
-            const currentQ = questionsList[currentQuestionIndex];
-
-            questionTracker.textContent = `Question ${currentQuestionIndex + 1} of ${questionsList.length}`;
-            questionText.textContent = currentQ.question;
-
-            optionsContainer.innerHTML = "";
-            optionSelected = false;
-            selectedElement = null;
-            isSubmitted = false;
-            submitBtn.textContent = "Submit Answer";
-            errorMsg.style.display = "none";
-
-            const letters = ['A', 'B', 'C', 'D'];
-            currentQ.options.forEach((opt, index) => {
-                // Updated Option Box matching Figma
-                const optionHTML = `
-                    <div class="quiz-option" data-value="${opt}" style="display: flex; align-items: center; background: #3B4D66;shadow-lg 16px 40px rgba(143, 160, 193, 0.14); padding: 18px; border-radius: 24px; margin-bottom: 24px; cursor: pointer; transition: all 0.3s ease; border: 3px solid transparent;">
-                        <div class="option-letter" style="background: #F4F6FA; color: #626C7F; border-radius: 12px; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-weight: 500; font-size: 28px; margin-right: 32px; flex-shrink: 0; transition: all 0.3s ease; font-family: 'Rubik', sans-serif;">${letters[index]}</div>
-                        <div class="quiz-label" style="font-size: 28px; font-weight: 500; color: white; font-family: 'Rubik', sans-serif;">${opt.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+            q.options.forEach((opt, idx) => {
+                const displayOpt = opt.trim() === "" ? "None of the above" : opt;
+                const letter = String.fromCharCode(65 + idx);
+                
+                const btn = document.createElement("button");
+                btn.className = "quiz-opt-btn group flex items-center gap-4 bg-navy p-4 rounded-3xl border-[3px] border-transparent text-left transition-all hover:border-purple outline-none";
+                
+                btn.innerHTML = `
+                    <div class="letter-box w-12 h-12 flex items-center justify-center rounded-xl bg-[#F4F6FA] text-[#626C7F] text-xl font-medium transition-all">
+                        ${letter}
                     </div>
+                    <span class="opt-text text-xl font-medium flex-1"></span>
                 `;
-                optionsContainer.insertAdjacentHTML('beforeend', optionHTML);
-            });
+                
+                btn.getElementsByClassName('opt-text')[0].textContent = displayOpt;
 
-            const options = document.querySelectorAll('.quiz-option');
-            options.forEach(option => {
-                option.addEventListener('click', function () {
-                    if (isSubmitted) return;
+                btn.onclick = () => {
+                    if(document.getElementById("main-btn").textContent !== "Submit Answer") return;
+                    
+                    const allBtns = document.getElementsByClassName("quiz-opt-btn");
+                    for (let b of allBtns) {
+                        b.style.borderColor = "transparent";
+                        const lb = b.getElementsByClassName('letter-box')[0];
+                        lb.style.backgroundColor = "#F4F6FA";
+                        lb.style.color = "#626C7F";
+                    }
 
-                    options.forEach(opt => {
-                        opt.style.border = '3px solid transparent';
-                        opt.querySelector('.option-letter').style.background = '#F4F6FA';
-                        opt.querySelector('.option-letter').style.color = '#626C7F';
-                    });
-
-                    this.style.border = '3px solid #A729F5';
-                    this.querySelector('.option-letter').style.background = '#A729F5';
-                    this.querySelector('.option-letter').style.color = 'white';
-
-                    optionSelected = true;
-                    selectedElement = this;
-                    errorMsg.style.display = "none";
-                });
+                    btn.style.borderColor = "#A729F5";
+                    selected = { el: btn, val: opt };
+                    document.getElementById("error").classList.add("hidden");
+                };
+                optionsDiv.appendChild(btn);
             });
         }
 
-        submitBtn.addEventListener('click', function () {
-            if (!optionSelected) {
-                errorMsg.style.display = "block";
+        document.getElementById("main-btn").onclick = () => {
+            const btn = document.getElementById("main-btn");
+            if (btn.textContent !== "Submit Answer") {
+                i++;
+                if (i < quiz.questions.length) load();
+                else location.href = `../score page/score_page.html?subject=${subject}&score=${score}&total=${quiz.questions.length}`;
                 return;
             }
+            if (!selected) return document.getElementById("error").classList.remove("hidden");
 
-            if (!isSubmitted) {
-                isSubmitted = true;
-                const correctAnswer = questionsList[currentQuestionIndex].answer;
-                const userAnswer = selectedElement.getAttribute('data-value');
+            const correct = quiz.questions[i].answer;
+            const letterBox = selected.el.getElementsByClassName('letter-box')[0];
+            letterBox.style.color = "white";
 
-                if (userAnswer === correctAnswer) {
-                    selectedElement.style.border = '3px solid #2FD887';
-                    selectedElement.querySelector('.option-letter').style.background = '#2FD887';
-                    score++;
-                } else {
-                    selectedElement.style.border = '3px solid #EE5454';
-                    selectedElement.querySelector('.option-letter').style.background = '#EE5454';
-                }
-
-                // Update Progress Bar
-                const progressPercentage = ((currentQuestionIndex + 1) / questionsList.length) * 100;
-                progressFill.style.width = `${progressPercentage}%`;
-
-                if (currentQuestionIndex < questionsList.length - 1) {
-                    submitBtn.textContent = "Next Question";
-                } else {
-                    submitBtn.textContent = "Finish Quiz";
-                }
+            if (selected.val === correct) {
+                score++;
+                selected.el.style.borderColor = "#2FD887";
+                letterBox.style.backgroundColor = "#2FD887";
             } else {
-                if (currentQuestionIndex < questionsList.length - 1) {
-                    currentQuestionIndex++;
-                    loadQuestion();
-                } else {
-                    window.location.href = `../score page/score_page.html?subject=${subject}&score=${score}&total=${questionsList.length}`;
-                }
+                selected.el.style.borderColor = "#EE5454";
+                letterBox.style.backgroundColor = "#EE5454";
             }
-        });
+            btn.textContent = (i + 1 < quiz.questions.length) ? "Next Question" : "Show Results";
+        };
+
+        load();
     </script>
 </body>
-
 </html>
