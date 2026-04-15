@@ -126,6 +126,7 @@
 
 .action-button:hover {
     opacity: 0.9;
+    background-color: #A855f7;
 }
 
 @media (max-width: 1024px) {
